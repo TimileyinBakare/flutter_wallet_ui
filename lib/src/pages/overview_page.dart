@@ -45,7 +45,7 @@ class OverviewPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              FlatButton(
+              TextButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text(
                   "Cancel",
@@ -209,7 +209,7 @@ class OverviewPage extends StatelessWidget {
               center: Text(
                 "68.0%",
                 style: TextStyle(color: Colors.white),
-              ),
+              ), leading: Container(), trailing: Container(),
             ),
           ),
           SizedBox(
@@ -272,17 +272,7 @@ class OverviewPage extends StatelessWidget {
           Stack(
             alignment: Alignment.center,
             children: <Widget>[
-              WaveProgress(
-                screenAwareSize(45, context),
-                fillColor,
-                bgColor,
-                67,
-              ),
-              Text(
-                "80%",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-              ),
+             
             ],
           ),
           SizedBox(

@@ -65,9 +65,7 @@ class HomePage extends StatelessWidget {
                     width: _media.width,
                     child:
                         NotificationListener<OverscrollIndicatorNotification>(
-                      onNotification: (overscroll) {
-                        overscroll.disallowGlow();
-                      },
+                     
                       child: ListView.builder(
                         physics: BouncingScrollPhysics(),
                         padding: EdgeInsets.only(bottom: 10),
@@ -188,9 +186,7 @@ class HomePage extends StatelessWidget {
                   height: screenAwareSize(
                       _media.longestSide <= 775 ? 110 : 80, context),
                   child: NotificationListener<OverscrollIndicatorNotification>(
-                    onNotification: (overscroll) {
-                      overscroll.disallowGlow();
-                    },
+                   
                     child: ListView.builder(
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
@@ -271,9 +267,7 @@ class HomePage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     NotificationListener<OverscrollIndicatorNotification>(
-                      onNotification: (overscroll) {
-                        overscroll.disallowGlow();
-                      },
+                      
                       child: ListView.separated(
                         physics: ClampingScrollPhysics(),
                         shrinkWrap: true,

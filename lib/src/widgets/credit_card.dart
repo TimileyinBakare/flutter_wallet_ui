@@ -4,7 +4,7 @@ import 'package:flutter_wallet_ui_challenge/src/models/credit_card_model.dart';
 class CreditCard extends StatelessWidget {
   final CreditCardModel card;
 
-  CreditCard({Key key, this.card}) : super(key: key);
+  CreditCard({Key? key, required this.card}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class CreditCard extends StatelessWidget {
                 ),
                 Text(
                   card.cardNo,
-                  style: Theme.of(context).textTheme.headline.copyWith(
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
@@ -58,7 +58,7 @@ class CreditCard extends StatelessWidget {
                       width: 10,
                     ),
                     Text(card.expiryDate,
-                        style: Theme.of(context).textTheme.headline.copyWith(
+                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                               color: Colors.black.withOpacity(0.5),
                               fontWeight: FontWeight.bold,
                             ))

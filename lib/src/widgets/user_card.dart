@@ -3,9 +3,8 @@ import 'package:flutter_wallet_ui_challenge/src/models/user_model.dart';
 
 class UserCardWidget extends StatelessWidget {
   final UserModel user;
-  const UserCardWidget({Key key, this.user})
-      : assert(user != null),
-        super(key: key);
+  const UserCardWidget({Key? key, required this.user})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

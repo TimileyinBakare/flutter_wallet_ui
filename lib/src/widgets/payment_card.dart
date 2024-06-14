@@ -4,7 +4,7 @@ import 'package:flutter_wallet_ui_challenge/src/models/payment_model.dart';
 class PaymentCardWidget extends StatefulWidget {
   final PaymentModel payment;
 
-  const PaymentCardWidget({Key key, this.payment}) : super(key: key);
+  const PaymentCardWidget({Key? key, required this.payment}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _PaymentCardWidgetState();

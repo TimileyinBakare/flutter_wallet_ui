@@ -45,20 +45,20 @@ class LinearPercentIndicator extends StatefulWidget {
   final bool animateFromLastPercent;
 
   LinearPercentIndicator(
-      {Key key,
+      {Key? key,
       this.fillColor = Colors.transparent,
       this.percent = 0.0,
       this.lineHeight = 5.0,
-      @required this.width,
+      required this.width,
       this.backgroundColor = const Color(0xFFB8C7CB),
       this.progressColor = Colors.red,
       this.animation = false,
       this.animationDuration = 500,
       this.animateFromLastPercent = false,
-      this.leading,
-      this.trailing,
-      this.center,
-      this.linearStrokeCap,
+      required this.leading,
+      required this.trailing,
+      required this.center,
+      required this.linearStrokeCap,
       this.padding = const EdgeInsets.symmetric(horizontal: 10.0),
       this.alignment = MainAxisAlignment.start})
       : super(key: key) {
@@ -73,16 +73,14 @@ class LinearPercentIndicator extends StatefulWidget {
 
 class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation _animation;
+  late AnimationController _animationController;
+  late Animation _animation;
   double _percent = 0.0;
 
   @override
   void dispose() {
-    if (_animationController != null) {
-      _animationController.dispose();
-    }
-    super.dispose();
+    _animationController.dispose();
+      super.dispose();
   }
 
   @override
@@ -109,18 +107,14 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
   void didUpdateWidget(LinearPercentIndicator oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.percent != widget.percent) {
-      if (_animationController != null) {
-        _animationController.duration =
-            Duration(milliseconds: widget.animationDuration);
-        _animation = Tween(
-                begin: widget.animateFromLastPercent ? oldWidget.percent : 0.0,
-                end: widget.percent)
-            .animate(_animationController);
-        _animationController.forward(from: 0.0);
-      } else {
-        _updateProgress();
-      }
-    }
+      _animationController.duration =
+          Duration(milliseconds: widget.animationDuration);
+      _animation = Tween(
+              begin: widget.animateFromLastPercent ? oldWidget.percent : 0.0,
+              end: widget.percent)
+          .animate(_animationController);
+      _animationController.forward(from: 0.0);
+        }
   }
 
   _updateProgress() {
@@ -131,11 +125,9 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
 
   @override
   Widget build(BuildContext context) {
-    var items = List<Widget>();
-    if (widget.leading != null) {
-      items.add(widget.leading);
-    }
-    items.add(Container(
+    var items ;
+    items.add(widget.leading);
+      items.add(Container(
         width: widget.width,
         height: widget.lineHeight * 2,
         padding: widget.padding,
@@ -152,10 +144,8 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
               : Container(),
         )));
 
-    if (widget.trailing != null) {
-      items.add(widget.trailing);
-    }
-
+    items.add(widget.trailing);
+  
     return Material(
       color: Colors.transparent,
       child: new Container(
@@ -183,8 +173,8 @@ class LinearPainter extends CustomPainter {
       {this.lineWidth,
       this.progress,
       this.center,
-      this.progressColor,
-      this.backgroundColor,
+      required this.progressColor,
+      required this.backgroundColor,
       this.linearStrokeCap = LinearStrokeCap.butt}) {
     _paintBackground.color = backgroundColor;
     _paintBackground.style = PaintingStyle.stroke;
